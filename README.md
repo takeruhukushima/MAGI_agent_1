@@ -1,3 +1,17 @@
+# 自分用メモ
+
+## version確認
+
+langgraph --version
+
+## langgraph 開発
+
+langgraph up 
+
+## langgraph cli version up
+
+pip install --upgrade langgraph-cli
+
 # LangGraph Cloud Example
 
 ![](static/agent_ui.png)

@@ -3,3 +3,5 @@ langchain_anthropic
 tavily-python
 langchain_community
 langchain_openai
+typing_extensions>=4.0.0
+langchain-google-genai
