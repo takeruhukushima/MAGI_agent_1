@@ -1,4 +1,4 @@
-# MAGI (Multi-Agent Goal-directed Intelligence) プロジェクト
+# MAGI (Manus Artificial General Intelligence) プロジェクト
 
 MAGIは、LangGraphを活用したマルチエージェント研究支援システムです。複数の専門エージェントが連携して、研究プロセス全体をサポートします。
 
