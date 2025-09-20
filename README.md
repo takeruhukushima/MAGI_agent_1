@@ -1,28 +1,55 @@
-# 自分用メモ
+# MAGI (Multi-Agent Goal-directed Intelligence) プロジェクト
 
-## version確認
+MAGIは、LangGraphを活用したマルチエージェント研究支援システムです。複数の専門エージェントが連携して、研究プロセス全体をサポートします。
 
-langgraph --version
+## プロジェクト概要
 
-## langgraph 開発
+MAGIは以下の4つの主要な専門エージェントで構成されています：
 
-langgraph up 
+1. **Survey MAGI**: 研究テーマの明確化と文献調査を担当
+2. **Planning MAGI**: 研究計画の立案と実験設計を担当
+3. **Execution MAGI**: 実験の実行とデータ収集を担当
+4. **Analysis MAGI**: データ分析と結果の解釈を担当
 
-## langgraph cli version up
+各エージェントは独立して動作する一方で、共通の状態（`AgentState`）を共有し、研究プロセスをシームレスに進行させます。
 
-pip install --upgrade langgraph-cli
+## ディレクトリ構造
 
-# LangGraph Cloud Example
+```
+my_agent/
+├── chains/                  # 各エージェントのチェーン定義
+│   ├── survey_magi/         # Survey MAGIのチェーン
+│   ├── planning_magi/       # Planning MAGIのチェーン
+│   ├── execution_magi/      # Execution MAGIのチェーン
+│   └── analysis_magi/       # Analysis MAGIのチェーン
+├── sub_agent/               # 各エージェントの実装
+├── utils/                   # ユーティリティ関数
+│   ├── nodes.py             # ノード定義
+│   ├── state.py             # 状態管理
+│   └── tools.py             # ツール定義
+├── prompts.py               # プロンプトテンプレート
+└── Science_MAGI.py          # メインのMAGIエージェント
+```
 
-![](static/agent_ui.png)
+## セットアップ
 
-This is an example agent to deploy with LangGraph Cloud.
+1. リポジトリをクローンします：
+   ```bash
+   git clone https://github.com/your-username/MAGI_agent_1.git
+   cd MAGI_agent_1
+   ```
 
-> [!TIP]
-> If you would rather use `pyproject.toml` for managing dependencies in your LangGraph Cloud project, please check out [this repository](https://github.com/langchain-ai/langgraph-example-pyproject).
+2. 必要なパッケージをインストールします：
+   ```bash
+   pip install langgraph cli
+   ```
 
-[LangGraph](https://github.com/langchain-ai/langgraph) is a library for building stateful, multi-actor applications with LLMs. The main use cases for LangGraph are conversational agents, and long-running, multi-step LLM applications or any LLM application that would benefit from built-in support for persistent checkpoints, cycles and human-in-the-loop interactions (ie. LLM and human collaboration).
-
-LangGraph shortens the time-to-market for developers using LangGraph, with a one-liner command to start a production-ready HTTP microservice for your LangGraph applications, with built-in persistence. This lets you focus on the logic of your LangGraph graph, and leave the scaling and API design to us. The API is inspired by the OpenAI assistants API, and is designed to fit in alongside your existing services.
-
-In order to deploy this agent to LangGraph Cloud you will want to first fork this repo. After that, you can follow the instructions [here](https://langchain-ai.github.io/langgraph/cloud/) to deploy to LangGraph Cloud.
+3. 環境変数を設定します（.envファイルを作成）：
+   ```
+   TAVILY_API_KEY=your_tavily_api_key
+   OPENAI_API_KEY=your_openai_api_key
+   ```
+4. LangGraphサーバーを起動します：
+   ```bash
+   langgraph up
+   ```
